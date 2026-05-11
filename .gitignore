@@ -12,9 +12,7 @@ dist-ssr
 dist-electron
 release
 *.local
-.vscode
 # Editor directories and files
-.vscode/.debug.env
 .idea
 .DS_Store
 *.suo
@@ -45,3 +43,4 @@ public/bin/*
 
 sh/*
 project/web/.cursor/
+config.bat

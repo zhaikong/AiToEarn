@@ -163,7 +163,7 @@ The simplest way — just open your browser:
 npx -y @aitoearn/openclaw-plugin-cli
 ```
 
-On first run, follow the prompts to complete the required selections and enter your API Key to finish setup.
+On first run, select the environment and enter your API Key. Make sure they match: China uses an API Key from `aitoearn.cn`, and international uses one from `aitoearn.ai`. A mismatch returns 401.
 
 After setup, you can receive and execute AiToEarn earning tasks directly inside OpenClaw:
 
@@ -176,6 +176,13 @@ After setup, you can receive and execute AiToEarn earning tasks directly inside 
 > Prerequisite: [Get an API Key](#get-api-key) first
 
 AiToEarn works with any MCP-compatible AI assistant. Here's how to configure the most popular ones:
+
+Choose the URL that matches your API Key. A mismatched environment and key returns 401:
+
+| Environment | MCP URL | SSE URL |
+|-------------|---------|---------|
+| China | `https://aitoearn.cn/api/unified/mcp` | `https://aitoearn.cn/api/unified/sse` |
+| International | `https://aitoearn.ai/api/unified/mcp` | `https://aitoearn.ai/api/unified/sse` |
 
 <details open>
 <summary><b>Claude Desktop</b></summary>
@@ -247,6 +254,8 @@ Open **[http://localhost:8080](http://localhost:8080)** and you're ready to go.
 > **Why Relay?** Publishing content requires logging into social media accounts (TikTok, Instagram, YouTube, etc.), which need OAuth developer credentials. With Relay, you can use the official aitoearn.ai credentials — **no need to register as a developer on each platform**.
 
 Add to `docker-compose.yml` under `aitoearn-server` (see [How to Get an API Key](#get-api-key)):
+
+Choose `RELAY_SERVER_URL` based on where `RELAY_API_KEY` was created: use `https://aitoearn.cn/api` for China keys and `https://aitoearn.ai/api` for international keys. A mismatch returns 401.
 
 ```yaml
 RELAY_SERVER_URL: https://aitoearn.ai/api

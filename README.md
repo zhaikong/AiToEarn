@@ -164,9 +164,12 @@ AiToEarn 最核心的目标：**帮助每一位创作者赚钱**。
 npx -y @aitoearn/openclaw-plugin-cli
 ```
 
-首次运行后会先让您选择环境，请注意，AitoEarn有两个环境，分别是中国版和国际版环境。
-如果使用中国版环境+国际版的key会导致401报错。
-请确保环境与key是匹配的。
+首次运行后会先让你选择环境并输入 API Key。请确保环境与 Key 匹配：
+
+- 中国版：使用 `aitoearn.cn` 获取的 API Key
+- 国际版：使用 `aitoearn.ai` 获取的 API Key
+
+环境和 Key 不匹配会导致 401。
 
 安装完成后，你就可以在 OpenClaw 中直接接收并执行 AiToEarn 的赚钱任务：
 
@@ -179,6 +182,13 @@ npx -y @aitoearn/openclaw-plugin-cli
 > 前置条件：已 [获取 API Key](#get-api-key)
 
 AiToEarn 支持所有兼容 MCP 协议的 AI 助手。以下是常见工具的配置方式：
+
+请根据 API Key 来源选择地址，环境和 Key 不匹配会导致 401：
+
+| 环境 | MCP 地址 | SSE 地址 |
+|------|---------|---------|
+| 中国版 | `https://aitoearn.cn/api/unified/mcp` | `https://aitoearn.cn/api/unified/sse` |
+| 国际版 | `https://aitoearn.ai/api/unified/mcp` | `https://aitoearn.ai/api/unified/sse` |
 
 <details open>
 <summary><b>Claude Desktop</b></summary>
@@ -250,6 +260,8 @@ docker compose up -d
 > **为什么要配 Relay？** 发布内容需要登录社交媒体账号（抖音、小红书、TikTok 等），而这些平台的 OAuth 登录需要开发者凭据。配置 Relay 后，你可以直接借用官方 aitoearn.ai 的凭据完成授权，**不需要自己去各平台申请开发者账号**。
 
 在 `docker-compose.yml` 的 `aitoearn-server` 服务中添加（API Key 获取方式见 [上方说明](#get-api-key)）：
+
+请根据 `RELAY_API_KEY` 来源选择 `RELAY_SERVER_URL`：中国版 Key 使用 `https://aitoearn.cn/api`，国际版 Key 使用 `https://aitoearn.ai/api`。环境和 Key 不匹配会导致 401。
 
 ```yaml
 RELAY_SERVER_URL: https://aitoearn.ai/api

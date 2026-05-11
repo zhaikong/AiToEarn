@@ -168,7 +168,7 @@ AiToEarnブラウザ拡張機能を通じて、上記のすべてのプラット
 npx -y @aitoearn/openclaw-plugin-cli
 ```
 
-初回実行時は案内に従って必要な項目を選択し、API Key を入力してインストールと設定を完了してください。
+初回実行時は環境を選択し、API Key を入力してください。中国版は `aitoearn.cn` の API Key、国際版は `aitoearn.ai` の API Key を使用します。環境と Key が一致しない場合は 401 になります。
 
 設定後は、OpenClaw 内で AiToEarn の収益化タスクを直接受け取り実行できます。
 
@@ -181,6 +181,13 @@ npx -y @aitoearn/openclaw-plugin-cli
 > 前提条件：[API Keyを取得済み](#get-api-key)
 
 AiToEarnはMCPプロトコルに対応するすべてのAIアシスタントで動作します。一般的なツールの設定方法：
+
+API Key の取得元に合わせて URL を選択してください。環境と Key が一致しない場合は 401 になります。
+
+| 環境 | MCP URL | SSE URL |
+|------|---------|---------|
+| 中国版 | `https://aitoearn.cn/api/unified/mcp` | `https://aitoearn.cn/api/unified/sse` |
+| 国際版 | `https://aitoearn.ai/api/unified/mcp` | `https://aitoearn.ai/api/unified/sse` |
 
 <details open>
 <summary><b>Claude Desktop</b></summary>
@@ -252,6 +259,8 @@ docker compose up -d
 > **なぜRelayが必要？** コンテンツを公開するにはソーシャルメディアアカウント（TikTok、Instagram、YouTubeなど）へのログインが必要で、これらのプラットフォームのOAuthログインには開発者認証情報が必要です。Relayを設定すれば、公式aitoearn.aiの認証情報を直接借用して認証を完了できるため、**各プラットフォームで開発者アカウントを申請する必要がありません**。
 
 `docker-compose.yml`の`aitoearn-server`サービスに以下を追加（API Keyの取得方法は[上記](#get-api-key)を参照）：
+
+`RELAY_API_KEY` の取得元に合わせて `RELAY_SERVER_URL` を選択してください。中国版 Key は `https://aitoearn.cn/api`、国際版 Key は `https://aitoearn.ai/api` を使用します。環境と Key が一致しない場合は 401 になります。
 
 ```yaml
 RELAY_SERVER_URL: https://aitoearn.ai/api
